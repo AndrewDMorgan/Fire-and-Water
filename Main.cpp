@@ -1,25 +1,27 @@
 #include <iostream>
 #include <thread>
 
+// run g++ -o3 -std=c++11 Main.cpp for maximum preformance
+
 
 // ------------------------- general globals -------------------------
 
-// height map stuff
+    // height map stuff
 
 const int SIZE_X = 30480;
 const int SIZE_Y = 30480;
 
 float heightMap[SIZE_X][SIZE_Y];
 
-// the properties for water
+    // the properties for water
 
-const int DROPS = 10;
+const int DROPS = 0;
 
 
 
 // ------------------------- Simulation Things -------------------------
 
-// runs the simulation on the dropplets
+    // runs the simulation on the dropplets
 
 void SimulateDropplets()
 {
@@ -30,7 +32,7 @@ void SimulateDropplets()
 
 // ------------------------- Threading Things -------------------------
 
-// A class to wrap up all the random things
+    // A class to wrap up all the random things
 
 class Thread
 {
@@ -40,7 +42,7 @@ class Thread
 public:
     // the constructors
     template <typename F>
-    Thread(F function)
+    Thread(F &function)
     {
         // allocating the memory of the threads
         threads = (std::thread*) malloc(sizeof(std::thread) * DROPS);
@@ -64,7 +66,8 @@ public:
 
 // ------------------------- Main Functions -------------------------
 
-// the main function, called on startup
+    // the main function, called on startup
+
 int main()
 {
     // creating the queue for the simulation
